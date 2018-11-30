@@ -3,6 +3,7 @@ import './App.css';
 import Items from './components/Items';
 import {generate as id} from 'shortid';
 import NewItem from './components/NewItem';
+import SearchBar from './components/SearchBar';
 
 class App extends Component {
   state = {
@@ -14,7 +15,8 @@ class App extends Component {
       { text: 'task5', id: id(), isChecked: false},
       { text: 'task6', id: id(), isChecked: true},
       { text: 'task7', id: id(), isChecked: false}
-    ]
+    ],
+    searchValue: ''
   }
 
   add = (item) => {
@@ -36,11 +38,17 @@ class App extends Component {
     this.setState({ items: this.state.items.map(item => item.id === id? {...item, isChecked: !item.isChecked} : item )})
   }
 
+  search = value => {
+    this.setState({ searchValue: value })
+  }
+
 
   render() {
+    const data = this.state.items.filter(item => item.text.includes(this.state.searchValue));
     return (
       <div>
-        <Items items={this.state.items} delete={this.delete} handleCheck
+        <SearchBar search={this.search}/>
+        <Items items={data} delete={this.delete} handleCheck
         ={this.handleCheck}/>
         <NewItem add={this.add}/>
         <button onClick={this.uncheckedAll}>uncheckedAll</button>
