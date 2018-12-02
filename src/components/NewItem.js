@@ -11,7 +11,7 @@ class NewItem extends Component {
     handleSubmit = e => {
         e.preventDefault();
         this.props.add({ text: this.state.value, id: id(), isChecked: false })
-        this.setState({ value: '' });
+        this.setState({ value: ''});
     }
 
     handleChange = e => {

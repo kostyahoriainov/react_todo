@@ -1,7 +1,7 @@
 /* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
 
-class SearchBar extends Component {
+export default class SearchBar extends Component {
 
     onSearch = () => {
         this.props.search(this.searchValue.value)
@@ -15,4 +15,3 @@ class SearchBar extends Component {
     }
 }
 
-export default SearchBar

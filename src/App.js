@@ -16,10 +16,11 @@ class App extends Component {
       { text: 'task6', id: id(), isChecked: true},
       { text: 'task7', id: id(), isChecked: false}
     ],
-    searchValue: ''
+    searchValue: '',
+    isCheckedAll: false
   }
 
-  add = (item) => {
+  add = item => {
     this.setState({ items: [...this.state.items, item] })
   }
 
@@ -27,11 +28,12 @@ class App extends Component {
     this.setState({items: this.state.items.filter((item) => item.id !== id)})
   }
 
-  uncheckedAll = () => {
+  handleCheckAll = () => {
     const items = this.state.items.map((item) => {
-      return {...item, isChecked: false}
+      return {...item, isChecked: this.state.isCheckedAll}
     })
-    this.setState({items})
+    this.setState({items: items,
+      isCheckedAll: !this.state.isCheckedAll})
   }
 
   handleCheck = id => {
@@ -48,10 +50,9 @@ class App extends Component {
     return (
       <div>
         <SearchBar search={this.search}/>
-        <Items items={data} delete={this.delete} handleCheck
-        ={this.handleCheck}/>
+        <Items items={data} delete={this.delete} handleCheck={this.handleCheck}/>
         <NewItem add={this.add}/>
-        <button onClick={this.uncheckedAll}>uncheckedAll</button>
+        <button onClick={this.handleCheckAll}> {this.state.isCheckedAll? 'uncheckedAll' : 'checkAll'}</button>
       </div>
     );
   }
