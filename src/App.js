@@ -48,8 +48,6 @@ class App extends Component {
 
   render() {
     const data = this.state.items.filter(item => item.text.toLowerCase().indexOf(this.state.searchValue.toLowerCase()) === 0);
-    const list = this.state.items.map(item => item.text.indexOf(this.state.searchValue))
-    console.log(list)
     return (
       <div>
         <SearchBar search={this.search}/>
