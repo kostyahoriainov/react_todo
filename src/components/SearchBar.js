@@ -2,14 +2,9 @@
 import React, { Component } from 'react';
 
 export default class SearchBar extends Component {
-
-    onSearch = () => {
-        this.props.search(this.searchValue.value)
-    }
-
     render () {
         return (<>
-            <input ref={search => {this.searchValue = search }} onKeyUp={this.onSearch} placeholder='Search'/>
+            <input ref={search => {this.searchValue = search }} onKeyUp={() => this.props.search(this.searchValue.value)} placeholder='Search'/>
             </>
         )
     }

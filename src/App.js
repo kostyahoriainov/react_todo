@@ -20,6 +20,7 @@ class App extends Component {
     isCheckedAll: false
   }
 
+
   add = item => {
     this.setState({ items: [...this.state.items, item] })
   }
@@ -46,13 +47,15 @@ class App extends Component {
 
 
   render() {
-    const data = this.state.items.filter(item => item.text.includes(this.state.searchValue));
+    const data = this.state.items.filter(item => item.text.toLowerCase().indexOf(this.state.searchValue.toLowerCase()) === 0);
+    const list = this.state.items.map(item => item.text.indexOf(this.state.searchValue))
+    console.log(list)
     return (
       <div>
         <SearchBar search={this.search}/>
         <Items items={data} delete={this.delete} handleCheck={this.handleCheck}/>
         <NewItem add={this.add}/>
-        <button onClick={this.handleCheckAll}> {this.state.isCheckedAll? 'uncheckedAll' : 'checkAll'}</button>
+        <button onClick={this.handleCheckAll}> {this.state.isCheckedAll? 'checkAll' : 'uncheckAll'}</button>
       </div>
     );
   }

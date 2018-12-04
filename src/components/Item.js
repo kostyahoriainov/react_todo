@@ -1,7 +1,7 @@
 /* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
 
-class Item extends Component {
+export default class Item extends Component {
 
     renderTask() {
         const item = this.props.item
@@ -33,5 +33,3 @@ class Item extends Component {
         )
     }
 }
-
-export default Item

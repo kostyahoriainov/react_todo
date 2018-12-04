@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { generate as id } from 'shortid';
 
-class NewItem extends Component {
+export default class NewItem extends Component {
 
     state = {
         value: ''
@@ -28,5 +28,3 @@ class NewItem extends Component {
         )
     }
 }
-
-export default NewItem
